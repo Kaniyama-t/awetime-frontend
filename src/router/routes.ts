@@ -4,8 +4,11 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    meta: {
+      requiresAuth: true
+    },
     children: [
-      { path: '', redirect: 'dashboard' },
+      { path: '', redirect: '/dashboard' },
       { path: 'dashboard', component: () => import('pages/Index.vue') }
     ]
   },
@@ -13,6 +16,10 @@ const routes: RouteConfig[] = [
     path: '/auth',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+      {
+        path: '',
+        redirect: '/auth/login'
+      },
       {
         path: 'forgotPassword',
         name: 'ForgotPassword',
