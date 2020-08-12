@@ -1,49 +1,49 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+  <div class="q-pa-md">
+    <q-layout view="lHh Lpr lff">
+      <q-header elevated class="bg-cyan-8">
+        <q-toolbar>
+          <q-toolbar-title>Header</q-toolbar-title>
+          <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+        </q-toolbar>
+      </q-header>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+      <q-drawer
+        v-model="drawer"
+        show-if-above
+        :width="200"
+        :breakpoint="400"
+      >
+        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+          <q-timeline color="secondary">
+            <q-timeline-entry
+              v-for="item in timeline" :key="item.timelineId"
+              title=""
+              :subtitle="item.TimelineDate"
+              :avatar="item.timelineIcon"
+              :body="item.timelineMsg"
+            ></q-timeline-entry>
+          </q-timeline>
+        </q-scroll-area>
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+            <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+              <div class="absolute-bottom bg-transparent">
+                <q-avatar size="56px" class="q-mb-sm">
+                  <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+                </q-avatar>
+                <div class="text-weight-bold">Razvan Stoenescu</div>
+                <div>@rstoenescu</div>
+              </div>
+            </q-img>
+          </q-drawer>
+        <q-page-container>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+        <q-page padding>
+          <router-view></router-view>
+        </q-page>
+      </q-page-container>
+    </q-layout>
+  </div>
 </template>
 
 <script lang="ts">
@@ -95,10 +95,16 @@ const linksData = [
 ]
 
 import { defineComponent, ref } from '@vue/composition-api'
+import { mapState } from 'vuex'
 
 export default defineComponent({
   name: 'MainLayout',
   components: { EssentialLink },
+  data(){
+    return {
+      body:'hogenyan'
+    }
+  },
   setup () {
     const leftDrawerOpen = ref(false)
     const essentialLinks = ref(linksData)

@@ -16,17 +16,22 @@ export interface StateInterface {
   example: unknown;
 }
 
+import TimelineStore from 'src/store/TimelineStore'
+import auth from 'src/store/auth/index'
+
 export default store(function ({ Vue }) {
   Vue.use(Vuex)
 
   const Store = new Vuex.Store<StateInterface>({
     modules: {
       // example
+      TimelineStore,
+      auth
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: !!process.env.DEV
+    strict: process.env.DEV
   })
 
   return Store

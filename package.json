@@ -7,17 +7,24 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "QENV=development quasar dev",
+    "test-dev": "QENV=test quasar dev",
+    "combined": "QENV=development+test quasar dev",
+    "build": "QENV=production quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "@vue/composition-api": "^0.6.4",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
+    "firebase": "^7.17.2",
+    "qenv": "^1.1.7",
     "quasar": "^1.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-qenv": "^1.0.3",
     "@types/node": "^10.17.15",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",

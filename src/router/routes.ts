@@ -9,6 +9,32 @@ const routes: RouteConfig[] = [
       { path: 'dashboard', component: () => import('pages/Index.vue') }
     ]
   },
+  {
+    path: '/auth',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: 'forgotPassword',
+        name: 'ForgotPassword',
+        component: () => import('pages/ForgotPassword.vue')
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: () => import('pages/Auth.vue')
+      },
+      {
+        path: 'logout',
+        name: 'Logout',
+        component: () => import('pages/Logout.vue')
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: () => import('pages/Auth.vue')
+      }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it
