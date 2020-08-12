@@ -36,18 +36,34 @@ export default function ( { store, ssrContext } ) {
       // finished its initialization, and handle the
       // authentication state of the user properly
       await ensureAuthIsInitialized(store)
+
+      // 認証が必要なページへの処理
       if (to.matched.some(record => record.meta.requiresAuth)) {
+
+        // 認証済み
         if (isAuthenticated(store)) {
-          next()
+          next() // Routerの設定準拠
+
+        // 未認証
         } else {
-          next('/auth/login')
+          next('/auth/login') // ログイン画面に上書き
+          Notify.create({
+            message: to.meta.requiresAuthReason,
+            color: 'negative'
+          })
         }
+
+      // ログイン済みセッションでの新規登録・ログインページ
       } else if ((to.path === '/auth/register' && isAuthenticated(store)) ||
         (to.path === '/auth/login' && isAuthenticated(store))) {
-        next('/dashboard')
+        next('/dashboard') // アクセス禁止(/dashboardへ強制転送)
+
+      // 未ログインかつ認証が不必要なページへの処理
       } else {
-        next()
+        next() // Routerの設定準拠
       }
+
+    // エラーハンドリング
     } catch (err) {
       Notify.create({
         message: `${err}`,

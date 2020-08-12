@@ -5,11 +5,15 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      requiresAuthReason: 'お手数ですが，ログインをお願い致します．'
     },
     children: [
       { path: '', redirect: '/dashboard' },
-      { path: 'dashboard', component: () => import('pages/Index.vue') }
+      { path: 'dashboard', component: () => import('pages/Index.vue') },
+      {
+        path: 'words', component: () => import('pages/WordStock.vue')
+      }
     ]
   },
   {
@@ -33,6 +37,7 @@ const routes: RouteConfig[] = [
       {
         path: 'logout',
         name: 'Logout',
+        meta: { requiresAuth: true, requiresAuthReason: '未ログイン状態ではログアウトできません．' },
         component: () => import('pages/Logout.vue')
       },
       {

@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <h5 class="text-center">{{ getAuthType }}</h5>
+    <h5 class="text-center">Logout</h5>
     <q-form class="authentication q-gutter-y-md" ref="emailAuthenticationForm" @submit="onSubmit">
         <h4>ログアウトしますか？</h4>
       <q-btn
@@ -8,7 +8,7 @@
         color="primary"
         data-cy="submit"
         type="submit"
-        :label="getAuthType"
+        label="Logout"
       >
       </q-btn>
     </q-form>
@@ -20,28 +20,9 @@ import { mapActions } from 'vuex'
 import { QSpinnerGears } from 'quasar'
 import router from '../router'
 export default {
-  name: 'Auth',
-  computed: {
-    getAuthType () {
-      return this.isRegistration ? 'Register' : 'Login'
-    },
-    isRegistration () {
-      return this.$route.name === 'Register'
-    },
-    routeAuthentication () {
-      return this.isRegistration ? '/auth/login' : '/auth/register'
-    }
-  },
-  data () {
-    return {
-      email: null,
-      isPwd: true,
-      password: null,
-      passwordMatch: null
-    }
-  },
+  name: 'Logout',
   methods: {
-    ...mapActions('auth', ['logoutUser', 'loginUser']),
+    ...mapActions('auth', ['logoutUser']),
     onSubmit () {
       this.logoutUser().then(function(){
           router.push({ path : 'auth/login' })

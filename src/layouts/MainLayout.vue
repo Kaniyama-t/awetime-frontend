@@ -3,15 +3,17 @@
     <q-layout view="lHh Lpr lff">
       <q-header elevated class="bg-cyan-8">
         <q-toolbar>
-          <q-toolbar-title>Header</q-toolbar-title>
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+          <q-toolbar-title>Awetime</q-toolbar-title>
+          <q-btn flat dense icon="logout" @click="$router.push('/auth/logout')">Logout</q-btn>
+
         </q-toolbar>
       </q-header>
 
       <q-drawer
         v-model="drawer"
         show-if-above
-        :width="200"
+        :width="300"
         :breakpoint="400"
       >
         <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
@@ -106,10 +108,10 @@ export default defineComponent({
     }
   },
   setup () {
-    const leftDrawerOpen = ref(false)
+    const drawer = ref(false)
     const essentialLinks = ref(linksData)
 
-    return { leftDrawerOpen, essentialLinks }
+    return { drawer, essentialLinks }
   }
 })
 </script>
