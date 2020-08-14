@@ -1,38 +1,29 @@
-import { store } from 'quasar/wrappers'
+import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import example from './module-example';
-// import { ExampleStateInterface } from './module-example/state';
+import auth from './auth'
+import TimelineStore from './TimelineStore'
+
+Vue.use(Vuex)
 
 /*
  * If not building with SSR mode, you can
  * directly export the Store instantiation
  */
-
-export interface StateInterface {
-  // Define your own store structure, using submodules if needed
-  // example: ExampleStateInterface;
-  // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
-  example: unknown;
-}
-
-import TimelineStore from 'src/store/TimelineStore'
-import auth from 'src/store/auth/index'
-
-export default store(function ({ Vue }) {
-  Vue.use(Vuex)
-
-  const Store = new Vuex.Store<StateInterface>({
+let store = null
+export default function (/* { ssrContext } */) {
+  const Store = new Vuex.Store({
     modules: {
-      // example
-      TimelineStore,
-      auth
+      auth,
+      TimelineStore
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV
   })
-
+  store = Store
   return Store
-})
+}
+
+export { store }

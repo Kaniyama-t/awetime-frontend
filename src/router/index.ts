@@ -1,6 +1,6 @@
 import firebaseServices from '../services/firebase'
 import { Notify } from 'quasar'
-import { store } from '../store/index'
+import { store } from '../store'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -13,7 +13,7 @@ Vue.use(VueRouter)
  * directly export the Router instantiation
  */
 
-export default function ( { store, ssrContext } ) {
+export default function () {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,

@@ -85,7 +85,7 @@ export default {
       return this.$route.name === 'Register'
     },
     routeAuthentication () {
-      return this.isRegistration ? '/auth/login' : '/auth/register'
+      return this.np ? '/auth/login' : '/auth/register'
     }
   },
   data () {

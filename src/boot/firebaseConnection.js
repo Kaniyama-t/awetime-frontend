@@ -1,6 +1,7 @@
+/* eslint-disable */
 import firebaseService from '../services/firebase'
 
-export default async ({ router, store, Vue }) => {
+export default ({ router, store, Vue }) => {
   const config = process.env.FIREBASE_CONFIG
   firebaseService.fBInit(config)
 
@@ -9,10 +10,10 @@ export default async ({ router, store, Vue }) => {
   // valid API key.
   // console.log(firebaseService.auth())
 
-  // Tell the application what to do when the 
+  // Tell the application what to do when the
   // authentication state has changed
   firebaseService.auth().onAuthStateChanged((user) => {
-    firebaseService.handleOnAuthStateChanged(store, user)
+    return firebaseService.handleOnAuthStateChanged(store, user)
   }, (error) => {
     console.error(error)
   })

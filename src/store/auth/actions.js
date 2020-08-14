@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Remember, we have access to our Vue instance not using
 // an arrow function in our actions file. This allows us
 // to create a scoped reference to our firebaseService - $fb

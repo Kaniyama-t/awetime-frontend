@@ -97,14 +97,14 @@ const linksData = [
 ]
 
 import { defineComponent, ref } from '@vue/composition-api'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default defineComponent({
   name: 'MainLayout',
   components: { EssentialLink },
-  data(){
+  data () {
     return {
-      body:'hogenyan'
+      body: 'hogenyan'
     }
   },
   setup () {
