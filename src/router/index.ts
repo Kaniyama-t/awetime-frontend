@@ -56,7 +56,7 @@ export default function () {
       // ログイン済みセッションでの新規登録・ログインページ
       } else if ((to.path === '/auth/register' && isAuthenticated(store)) ||
         (to.path === '/auth/login' && isAuthenticated(store))) {
-        next('/dashboard') // アクセス禁止(/dashboardへ強制転送)
+        next('/u/dashboard') // アクセス禁止(/dashboardへ強制転送)
 
       // 未ログインかつ認証が不必要なページへの処理
       } else {

@@ -17,11 +17,16 @@
     "@quasar/extras": "^1.0.0",
     "@vue/composition-api": "^0.6.4",
     "axios": "^0.18.1",
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
+    "countup.js": "^2.0.6",
     "eslint": "^7.6.0",
     "firebase": "^7.17.2",
     "qenv": "^1.1.7",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-chartjs": "^3.5.0",
+    "vue-countup-v2": "^4.0.0",
+    "vue-echarts-v3": "^2.0.1"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
@@ -36,7 +41,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.2.2"
+    "eslint-plugin-vue": "^v7.0.0-beta.2"
   },
   "browserslist": [
     "last 10 Chrome versions",

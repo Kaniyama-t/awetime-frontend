@@ -1,19 +1,20 @@
 <!-- eslint-disable -->
 <template>
-  <q-page padding>
+  <div padding>
     <h5 class="text-center">Logout</h5>
-    <q-form class="authentication q-gutter-y-md" ref="emailAuthenticationForm" @submit="onSubmit">
+      <q-form class="authentication q-gutter-y-md" ref="emailAuthenticationForm" @submit="onSubmit">
         <h4>ログアウトしますか？</h4>
-      <q-btn
-        class="full-width q-mt-md"
-        color="primary"
-        data-cy="submit"
-        type="submit"
-        label="Logout"
-      >
-      </q-btn>
-    </q-form>
-  </q-page>
+        <q-btn
+          class="full-width q-mt-md"
+          color="primary"
+          data-cy="submit"
+          type="submit"
+          label="Logout"
+          icon="logout"
+        >
+        </q-btn>
+      </q-form>
+  </div>
 </template>
 
 <script>

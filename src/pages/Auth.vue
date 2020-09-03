@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <div padding style="width: auto!important;">
     <h5 class="text-center">{{ getAuthType }}</h5>
     <q-form class="authentication q-gutter-y-md" ref="emailAuthenticationForm" @submit="onSubmit">
       <q-input
@@ -69,7 +69,7 @@
           <router-link class="text-blue" to="forgotPassword">Forgot Password?</router-link>
       </p>
     </q-form>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -82,7 +82,7 @@ export default {
       return this.isRegistration ? 'Register' : 'Login'
     },
     isRegistration () {
-      return this.$route.name === 'Register'
+      return (this.$route.name) === 'Register'
     },
     routeAuthentication () {
       return this.np ? '/auth/login' : '/auth/register'
