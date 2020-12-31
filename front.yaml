@@ -1,0 +1,12 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: dist/spa/index.html
+  upload: dist/spa/index.html
+
+- url: /(.*)
+  static_files: dist/spa/\1
+  upload: dist/spa/(.*)

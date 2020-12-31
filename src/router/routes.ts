@@ -2,11 +2,19 @@ import { RouteConfig } from 'vue-router'
 
 const routes: RouteConfig[] = [
   {
-    path: '/',
+    path: '/times',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'words', component: () => import('pages/TimesWord.vue') }
+    ]
+  },
+  {
+    path: '/',
+    component: () => import('layouts/LandingLayout.vue'),
+    children: [
+      { path: '/', component: () => import('pages/landing/index.vue') },
+      { path: 'login', component: () => import('pages/landing/login.vue') },
     ]
   },
 
